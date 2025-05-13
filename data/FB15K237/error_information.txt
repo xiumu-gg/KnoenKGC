@@ -1,0 +1,1532 @@
+14030
+
+帮我将下面的数据按照{"entity":"Australian Labor Party", "class":"Political party"}的格式进行输出
+
+[  
+  {\"entity\":\"blaxploitation film\", \"class\":\"电影类型\"},  
+  {\"entity\":\"Tianjin\", \"class\":\"城市\"},  
+  {\"entity\":\"Matador Records\", \"class\":\"唱片公司\"},  
+  {\"entity\":\"Chatham\", \"class\":\"城市\"},  
+  {\"entity\":\"Venu Madhav\", \"class\":\"人物\"},  
+  {\"entity\":\"Liberal Democrats\", \"class\":\"政党\"},  
+  {\"entity\":\"Northwestern State University\", \"class\":\"大学\"},  
+  {\"entity\":\"Pontefract\", \"class\":\"城市\"},  
+  {\"entity\":\"Golders Green Crematorium\", \"class\":\"建筑物\"},  
+  {\"entity\":\"Nantes\", \"class\":\"城市\"}  
+]
+
+
+
+[  
+  {\"entity\":\"blaxploitation film\", \"class\":\"电影类型\"},  
+  {\"entity\":\"Tianjin\", \"class\":\"城市\"},  
+  {\"entity\":\"Matador Records\", \"class\":\"唱片公司\"},  
+  {\"entity\":\"Chatham\", \"class\":\"城市\"},  
+  {\"entity\":\"Venu Madhav\", \"class\":\"人物\"},  
+  {\"entity\":\"Liberal Democrats\", \"class\":\"政党\"},  
+  {\"entity\":\"Northwestern State University\", \"class\":\"大学\"},  
+  {\"entity\":\"Pontefract\", \"class\":\"城市\"},  
+  {\"entity\":\"Golders Green Crematorium\", \"class\":\"建筑物\"},  
+  {\"entity\":\"Nantes\", \"class\":\"城市\"}  
+]
+
+[
+  {"entity":"blaxploitation film", "class":"电影类型"},
+  {"entity":"Tianjin", "class":"城市"},
+  {"entity":"Matador Records", "class":"唱片公司"},
+  {"entity":"Chatham", "class":"城市"},
+  {"entity":"Venu Madhav", "class":"人物"},
+  {"entity":"Liberal Democrats", "class":"政党"},
+  {"entity":"Northwestern State University", "class":"大学"},
+  {"entity":"Pontefract", "class":"城市"},
+  {"entity":"Golders Green Crematorium", "class":"建筑物"},
+  {"entity":"Nantes", "class":"城市"}
+]
+
+
+
+14540
+
+<think>
+嗯，用户发来了一个请求，看起来是要我帮他生成实体类型，也就是类。他的输入格式是这样的：每次都会给十个实体名称，用[{“entity”:”name1“},...]的形式，然后希望我按照{“entity”:”name1“, “class”:”classname“}的格式输出，并且不要其他无关内容。
+
+好的，先看看他给的例子。他提供了一个输入：[{"entity": "Australian Labor Party"}]。然后我的回应应该是生成对应的类，比如“Political party”。这看起来不复杂，但是得确保每次都能准确分类。
+
+用户可能是在做数据整理或者实体识别方面的工作，需要将名称与类型配对。他特别强调不要输出其他无关内容，所以我必须严格遵守格式要求，只返回所需的JSON数组。
+
+接下来，我会分析他的需求。每次处理十个实体，这可能意味着他有大量数据需要处理，或者是定期更新。因此，我的回应速度和准确性都很重要。此外，他可能希望自动化这个过程，所以格式的一致性至关重要，不应该出现错误或额外的信息。
+
+考虑到这些，我会准备好每次接收十个实体名称，并快速匹配它们对应的类型。比如，如果有“Google”，我会返回“Technology company”；如果是“New York”，则可能是“City”。这样，用户就能轻松整合到他的系统或数据中。
+
+同时，我需要注意实体名称可能有不同的拼写或者大小写，但JSON格式通常区分大小写，所以保持一致性很重要。如果遇到不确定的类型，可能需要进一步确认，但根据例子来看，大部分情况应该是明确的，比如政党、城市、公司等。
+
+最后，我会确保每次回应都仅包含用户要求的内容，没有多余的话或者解释，这样可以节省他的时间和资源。整个流程要高效且准确，满足他的需求。
+</think>
+
+{"entity":"Australian Labor Party", "class":"Political party"}
+
+
+
+{"entity":"Australian Labor Party", "class":"Political party"}
+
+
+
+    {
+        "entity": "blaxploitation film",
+        "class": "电影类型"
+    },
+    {
+        "entity": "Tianjin",
+        "class": "城市"
+    },
+    {
+        "entity": "Matador Records",
+        "class": "唱片公司"
+    },
+    {
+        "entity": "Chatham",
+        "class": "城市"
+    },
+    {
+        "entity": "Venu Madhav",
+        "class": "人物"
+    },
+    {
+        "entity": "Liberal Democrats",
+        "class": "政党"
+    },
+    {
+        "entity": "Northwestern State University",
+        "class": "大学"
+    },
+    {
+        "entity": "Pontefract",
+        "class": "城市"
+    },
+    {
+        "entity": "Golders Green Crematorium",
+        "class": "建筑物"
+    },
+    {
+        "entity": "Nantes",
+        "class": "城市"
+    }
+
+
+
+    {
+    "entity": "blaxploitation film",
+    "class": "film genre"
+},
+{
+    "entity": "Tianjin",
+    "class": "city"
+},
+{
+    "entity": "Matador Records",
+    "class": "record label"
+},
+{
+    "entity": "Chatham",
+    "class": "city"
+},
+{
+    "entity": "Venu Madhav",
+    "class": "person"
+},
+{
+    "entity": "Liberal Democrats",
+    "class": "political party"
+},
+{
+    "entity": "Northwestern State University",
+    "class": "university"
+},
+{
+    "entity": "Pontefract",
+    "class": "city"
+},
+{
+    "entity": "Golders Green Crematorium",
+    "class": "building"
+},
+{
+    "entity": "Nantes",
+    "class": "city"
+}
+
+
+
+    {
+        "entity": "Blu-ray Disc",
+        "class": "媒体格式"
+    },
+    {
+        "entity": "Dominic Monaghan",
+        "class": "人物"
+    },
+    {
+        "entity": "Orlando Bloom",
+        "class": "人物"
+    },
+    {
+        "entity": "Seinfeld",
+        "class": "电视剧集"
+    },
+    {
+        "entity": "executive producer",
+        "class": "职业"
+    },
+    {
+        "entity": "Haywire",
+        "class": "电影"
+    },
+    {
+        "entity": "Jack Reacher",
+        "class": "书籍系列"
+    },
+    {
+        "entity": "Jerry Belson",
+        "class": "人物"
+    },
+    {
+        "entity": "Jay Kogen",
+        "class": "人物"
+    },
+    {
+        "entity": "BAFTA Award for Best Sound",
+        "class": "奖项"
+    },
+
+{
+    "entity": "Blu-ray Disc",
+    "class": "media format"
+},
+{
+    "entity": "Dominic Monaghan", 
+    "class": "person"
+},
+{
+    "entity": "Orlando Bloom",
+    "class": "person"
+},
+{
+    "entity": "Seinfeld",
+    "class": "TV series"
+},
+{
+    "entity": "executive producer",
+    "class": "profession"
+},
+{
+    "entity": "Haywire",
+    "class": "movie"
+},
+{
+    "entity": "Jack Reacher",
+    "class": "book series"
+},
+{
+    "entity": "Jerry Belson",
+    "class": "person"
+},
+{
+    "entity": "Jay Kogen",
+    "class": "person"
+},
+{
+    "entity": "BAFTA Award for Best Sound",
+    "class": "award"
+},
+
+
+
+    {
+        "entity": "Gorillaz",
+        "class": "虚拟乐队"
+    },
+    {
+        "entity": "Doctor of Medicine",
+        "class": "学位"
+    },
+    {
+        "entity": "University of Vienna",
+        "class": "大学"
+    },
+    {
+        "entity": "Vince Gill",
+        "class": "音乐家"
+    },
+    {
+        "entity": "Trisha Yearwood",
+        "class": "音乐家"
+    },
+    {
+        "entity": "Mary Poppins",
+        "class": "虚构角色"
+    },
+    {
+        "entity": "Robert B. Sherman",
+        "class": "作曲家"
+    },
+    {
+        "entity": "Looney Tunes: Back in Action",
+        "class": "电影"
+    },
+    {
+        "entity": "Chris Carter",
+        "class": "电视名人"
+    },
+    {
+        "entity": "Zoolander",
+        "class": "电影"
+    },
+
+
+{
+        "entity": "Gorillaz",
+        "class": "virtual band"
+    },
+    {
+        "entity": "Doctor of Medicine",
+        "class": "academic degree"
+    },
+    {
+        "entity": "University of Vienna",
+        "class": "university"
+    },
+    {
+        "entity": "Vince Gill", 
+        "class": "musician"
+    },
+    {
+        "entity": "Trisha Yearwood",
+        "class": "musician"
+    },
+    {
+        "entity": "Mary Poppins",
+        "class": "fictional character"
+    },
+    {
+        "entity": "Robert B. Sherman",
+        "class": "composer"
+    },
+    {
+        "entity": "Looney Tunes: Back in Action",
+        "class": "movie"
+    },
+    {
+        "entity": "Chris Carter",
+        "class": "TV personality"
+    },
+    {
+        "entity": "Zoolander",
+        "class": "movie"
+    },
+
+    {
+        "entity": "Las Vegas",
+        "class": "城市"
+    },
+    {
+        "entity": "Emma Stone",
+        "class": "演员"
+    },
+    {
+        "entity": "Christopher Lee",
+        "class": "演员"
+    },
+    {
+        "entity": "29th Academy Awards",
+        "class": "奖项"
+    },
+    {
+        "entity": "George Martin",
+        "class": "作家/作曲家"
+    },
+    {
+        "entity": "Scott McDonald",
+        "class": "足球运动员"
+    },
+    {
+        "entity": "Huddersfield Town A.F.C.",
+        "class": "足球俱乐部"
+    },
+    {
+        "entity": "Grammy Award for Best Chamber Music/Small Ensemble Performance",
+        "class": "音乐奖项"
+    },
+    {
+        "entity": "Denise Richards",
+        "class": "演员"
+    },
+    {
+        "entity": "Zero Dark Thirty",
+        "class": "电影"
+    },
+
+{
+    "entity": "Las Vegas",
+    "class": "city"
+},
+{
+    "entity": "Emma Stone",
+    "class": "actor"
+},
+{
+    "entity": "Christopher Lee", 
+    "class": "actor"
+},
+{
+    "entity": "29th Academy Awards",
+    "class": "award"
+},
+{
+    "entity": "George Martin",
+    "class": "writer/composer"
+},
+{
+    "entity": "Scott McDonald",
+    "class": "footballer"
+},
+{
+    "entity": "Huddersfield Town A.F.C.",
+    "class": "football club"
+},
+{
+    "entity": "Grammy Award for Best Chamber Music/Small Ensemble Performance",
+    "class": "music award"
+},
+{
+    "entity": "Denise Richards",
+    "class": "actor"
+},
+{
+    "entity": "Zero Dark Thirty",
+    "class": "movie"
+},
+
+
+
+    {
+        "entity": "Pixies",
+        "class": "乐队"
+    },
+    {
+        "entity": "Samuel Goldwyn",
+        "class": "电影制片人"
+    },
+    {
+        "entity": "Akira Ishida",
+        "class": "声优"
+    },
+    {
+        "entity": "Lima",
+        "class": "城市"
+    },
+    {
+        "entity": "Roger Birnbaum",
+        "class": "电影制片人"
+    },
+    {
+        "entity": "Milt Franklyn",
+        "class": "作曲家"
+    },
+    {
+        "entity": "Frank Pierson",
+        "class": "电影导演和编剧"
+    },
+    {
+        "entity": "Jennifer Connelly",
+        "class": "女演员"
+    },
+    {
+        "entity": "Requiem for a Dream",
+        "class": "电影"
+    },
+    {
+        "entity": "Leslie Bricusse",
+        "class": "作曲家和词曲作者"
+    },
+
+
+{
+    "entity": "Pixies",
+    "class": "band"
+},
+{
+    "entity": "Samuel Goldwyn",
+    "class": "film producer"
+},
+{
+    "entity": "Akira Ishida", 
+    "class": "voice actor"
+},
+{
+    "entity": "Lima",
+    "class": "city"
+},
+{
+    "entity": "Roger Birnbaum",
+    "class": "film producer"
+},
+{
+    "entity": "Milt Franklyn",
+    "class": "composer"
+},
+{
+    "entity": "Frank Pierson",
+    "class": "film director and screenwriter"
+},
+{
+    "entity": "Jennifer Connelly",
+    "class": "actress"
+},
+{
+    "entity": "Requiem for a Dream",
+    "class": "movie"
+},
+{
+    "entity": "Leslie Bricusse",
+    "class": "composer and songwriter"
+},
+
+
+
+    {
+        "entity": "Brentford F.C.",
+        "class": "足球俱乐部"
+    },
+    {
+        "entity": "Anne Bancroft",
+        "class": "女演员"
+    },
+    {
+        "entity": "India.Arie",
+        "class": "音乐人"
+    },
+    {
+        "entity": "post-punk revival",
+        "class": "音乐流派"
+    },
+    {
+        "entity": "Modest Mouse",
+        "class": "乐队"
+    },
+    {
+        "entity": "JoBeth Williams",
+        "class": "女演员"
+    },
+    {
+        "entity": "Academy Award for Best Live Action Short Film",
+        "class": "电影奖项"
+    },
+    {
+        "entity": "Jeremy Piven",
+        "class": "男演员"
+    },
+    {
+        "entity": "Anguilla",
+        "class": "岛屿"
+    },
+    {
+        "entity": "Deion Sanders",
+        "class": "运动员"
+    },
+
+{
+    "entity": "Brentford F.C.",
+    "class": "football club"
+},
+{
+    "entity": "Anne Bancroft",
+    "class": "actress"
+},
+{
+    "entity": "India.Arie", 
+    "class": "musician"
+},
+{
+    "entity": "post-punk revival",
+    "class": "music genre"
+},
+{
+    "entity": "Modest Mouse",
+    "class": "band"
+},
+{
+    "entity": "JoBeth Williams",
+    "class": "actress"
+},
+{
+    "entity": "Academy Award for Best Live Action Short Film",
+    "class": "film award"
+},
+{
+    "entity": "Jeremy Piven",
+    "class": "actor"
+},
+{
+    "entity": "Anguilla",
+    "class": "island"
+},
+{
+    "entity": "Deion Sanders",
+    "class": "athlete"
+},
+
+    {
+        "entity": "INXS",
+        "class": "音乐组合"
+    },
+    {
+        "entity": "Richard D. Zanuck",
+        "class": "电影制片人"
+    },
+    {
+        "entity": "John Keats",
+        "class": "诗人"
+    },
+    {
+        "entity": "Kingdom of Great Britain",
+        "class": "国家"
+    },
+    {
+        "entity": "Shatrughan Sinha",
+        "class": "演员"
+    },
+    {
+        "entity": "Patna",
+        "class": "城市"
+    },
+    {
+        "entity": "Leslie Cheung",
+        "class": "歌手"
+    },
+    {
+        "entity": "The Late Shift",
+        "class": "书籍"
+    },
+    {
+        "entity": "In the Mood for Love",
+        "class": "电影"
+    },
+    {
+        "entity": "presidential system",
+        "class": "政府体制"
+    },
+
+
+{
+    "entity": "INXS",
+    "class": "music group"
+},
+{
+    "entity": "Richard D. Zanuck",
+    "class": "film producer"
+},
+{
+    "entity": "John Keats", 
+    "class": "poet"
+},
+{
+    "entity": "Kingdom of Great Britain",
+    "class": "country"
+},
+{
+    "entity": "Shatrughan Sinha",
+    "class": "actor"
+},
+{
+    "entity": "Patna",
+    "class": "city"
+},
+{
+    "entity": "Leslie Cheung",
+    "class": "singer"
+},
+{
+    "entity": "The Late Shift",
+    "class": "book"
+},
+{
+    "entity": "In the Mood for Love",
+    "class": "film"
+},
+{
+    "entity": "presidential system",
+    "class": "government system"
+},
+
+    {
+        "entity": "mathematician",
+        "class": "职业"
+    },
+    {
+        "entity": "AACTA Award for Best Cinematography",
+        "class": "奖项"
+    },
+    {
+        "entity": "The Adventures of Priscilla, Queen of the Desert",
+        "class": "电影"
+    },
+    {
+        "entity": "Days of Being Wild",
+        "class": "电影"
+    },
+    {
+        "entity": "Japan national football team",
+        "class": "足球队"
+    },
+    {
+        "entity": "Hema Malini",
+        "class": "人物"
+    },
+    {
+        "entity": "Ludwig Wittgenstein",
+        "class": "人物"
+    },
+    {
+        "entity": "Kerala",
+        "class": "地点"
+    },
+    {
+        "entity": "March",
+        "class": "时间"
+    },
+    {
+        "entity": "Man on the Moon",
+        "class": "电影"
+    },
+
+{
+    "entity": "mathematician",
+    "class": "profession"
+},
+{
+    "entity": "AACTA Award for Best Cinematography",
+    "class": "award"
+},
+{
+    "entity": "The Adventures of Priscilla, Queen of the Desert", 
+    "class": "movie"
+},
+{
+    "entity": "Days of Being Wild",
+    "class": "movie"
+},
+{
+    "entity": "Japan national football team",
+    "class": "football team"
+},
+{
+    "entity": "Hema Malini",
+    "class": "person"
+},
+{
+    "entity": "Ludwig Wittgenstein",
+    "class": "person"
+},
+{
+    "entity": "Kerala",
+    "class": "location"
+},
+{
+    "entity": "March",
+    "class": "time"
+},
+{
+    "entity": "Man on the Moon",
+    "class": "movie"
+},
+
+    {
+        "entity": "We Have a Pope",
+        "class": "电影"
+    },
+    {
+        "entity": "Parlophone",
+        "class": "唱片公司"
+    },
+    {
+        "entity": "Duran Duran",
+        "class": "音乐组合"
+    },
+    {
+        "entity": "Matt Chamberlain",
+        "class": "鼓手"
+    },
+    {
+        "entity": "James Whitmore",
+        "class": "演员"
+    },
+    {
+        "entity": "animated film",
+        "class": "动画电影"
+    },
+    {
+        "entity": "Kavala F.C.",
+        "class": "足球俱乐部"
+    },
+    {
+        "entity": "handball",
+        "class": "运动项目"
+    },
+    {
+        "entity": "1976 Summer Olympics",
+        "class": "夏季奥运会"
+    },
+    {
+        "entity": "Portsmouth",
+        "class": "城市"
+    },
+
+
+{
+    "entity": "We Have a Pope",
+    "class": "film"
+},
+{
+    "entity": "Parlophone",
+    "class": "record label"
+},
+{
+    "entity": "Duran Duran", 
+    "class": "music group"
+},
+{
+    "entity": "Matt Chamberlain",
+    "class": "drummer"
+},
+{
+    "entity": "James Whitmore",
+    "class": "actor"
+},
+{
+    "entity": "animated film",
+    "class": "animated film"
+},
+{
+    "entity": "Kavala F.C.",
+    "class": "football club"
+},
+{
+    "entity": "handball",
+    "class": "sport"
+},
+{
+    "entity": "1976 Summer Olympics",
+    "class": "Summer Olympics"
+},
+{
+    "entity": "Portsmouth",
+    "class": "city"
+},
+
+
+
+    {
+        "entity": "Evangelicalism",
+        "class": "宗教运动"
+    },
+    {
+        "entity": "Southend United F.C.",
+        "class": "足球俱乐部"
+    },
+    {
+        "entity": "creative writing",
+        "class": "文学"
+    },
+    {
+        "entity": "sound",
+        "class": "物理现象"
+    },
+    {
+        "entity": "Audrey Hepburn",
+        "class": "演员"
+    },
+    {
+        "entity": "The Fall",
+        "class": "音乐组合"
+    },
+    {
+        "entity": "Sheldon Leonard",
+        "class": "导演"
+    },
+    {
+        "entity": "The Andy Griffith Show",
+        "class": "电视节目"
+    },
+    {
+        "entity": "Asia Argento",
+        "class": "演员"
+    },
+    {
+        "entity": "A Place in the Sun",
+        "class": "电影"
+    },
+
+{
+    "entity": "Evangelicalism",
+    "class": "religious movement"
+},
+{
+    "entity": "Southend United F.C.",
+    "class": "football club"
+},
+{
+    "entity": "creative writing", 
+    "class": "literature"
+},
+{
+    "entity": "sound",
+    "class": "physical phenomenon"
+},
+{
+    "entity": "Audrey Hepburn",
+    "class": "actor"
+},
+{
+    "entity": "The Fall",
+    "class": "music group"
+},
+{
+    "entity": "Sheldon Leonard",
+    "class": "director"
+},
+{
+    "entity": "The Andy Griffith Show",
+    "class": "television show"
+},
+{
+    "entity": "Asia Argento",
+    "class": "actor"
+},
+{
+    "entity": "A Place in the Sun",
+    "class": "film"
+},
+
+    {
+        "entity": "J-pop",
+        "class": "音乐类型"
+    },
+    {
+        "entity": "Dortmund",
+        "class": "城市"
+    },
+    {
+        "entity": "Renny Harlin",
+        "class": "电影导演"
+    },
+    {
+        "entity": "Ossie Davis",
+        "class": "演员"
+    },
+    {
+        "entity": "West Hollywood",
+        "class": "城市"
+    },
+    {
+        "entity": "Roger Moore",
+        "class": "演员"
+    },
+    {
+        "entity": "Rick James",
+        "class": "音乐人"
+    },
+    {
+        "entity": "Michael Kamen",
+        "class": "作曲家"
+    },
+    {
+        "entity": "Peking University",
+        "class": "大学"
+    },
+    {
+        "entity": "Leon Cort",
+        "class": "演员"
+    },
+
+
+
+{
+    "entity": "J-pop",
+    "class": "music genre"
+},
+{
+    "entity": "Dortmund",
+    "class": "city"
+},
+{
+    "entity": "Renny Harlin", 
+    "class": "film director"
+},
+{
+    "entity": "Ossie Davis",
+    "class": "actor"
+},
+{
+    "entity": "West Hollywood",
+    "class": "city"
+},
+{
+    "entity": "Roger Moore",
+    "class": "actor"
+},
+{
+    "entity": "Rick James",
+    "class": "musician"
+},
+{
+    "entity": "Michael Kamen",
+    "class": "composer"
+},
+{
+    "entity": "Peking University",
+    "class": "university"
+},
+{
+    "entity": "Leon Cort",
+    "class": "actor"
+},
+
+
+
+
+    {
+        "entity": "46th Annual Grammy Awards",
+        "class": "颁奖典礼"
+    },
+    {
+        "entity": "The Master",
+        "class": "电影"
+    },
+    {
+        "entity": "Gotha",
+        "class": "城市"
+    },
+    {
+        "entity": "Portsmouth F.C.",
+        "class": "体育俱乐部"
+    },
+    {
+        "entity": "John Larroquette",
+        "class": "人"
+    },
+    {
+        "entity": "zinc",
+        "class": "化学元素"
+    },
+    {
+        "entity": "Melissa Leo",
+        "class": "人"
+    },
+    {
+        "entity": "vomiting",
+        "class": "疾病症状"
+    },
+    {
+        "entity": "Mark Gordon",
+        "class": "人"
+    },
+    {
+        "entity": "University of Hong Kong",
+        "class": "教育机构"
+    },
+
+
+{
+    "entity": "46th Annual Grammy Awards",
+    "class": "award show"
+},
+{
+    "entity": "The Master", 
+    "class": "film"
+},
+{
+    "entity": "Gotha",
+    "class": "city"
+},
+{
+    "entity": "Portsmouth F.C.",
+    "class": "football club"
+},
+{
+    "entity": "John Larroquette",
+    "class": "actor"
+},
+{
+    "entity": "zinc",
+    "class": "chemical element"
+},
+{
+    "entity": "Melissa Leo",
+    "class": "actress"
+},
+{
+    "entity": "vomiting",
+    "class": "medical symptom"
+},
+{
+    "entity": "Mark Gordon",
+    "class": "producer"
+},
+{
+    "entity": "University of Hong Kong",
+    "class": "university"
+},
+
+
+
+
+    {
+        "entity": "Crown of Aragon",
+        "class": "王冠"
+    },
+    {
+        "entity": "Jerusalem",
+        "class": "城市"
+    },
+    {
+        "entity": "Northampton",
+        "class": "城镇"
+    },
+    {
+        "entity": "Rockingham County",
+        "class": "县"
+    },
+    {
+        "entity": "TNT",
+        "class": "物流公司"
+    },
+    {
+        "entity": "WCW Monday Nitro",
+        "class": "职业摔跤促销"
+    },
+    {
+        "entity": "Kingdom of Romania",
+        "class": "王国"
+    },
+    {
+        "entity": "Star Trek: Deep Space Nine",
+        "class": "电视剧集"
+    },
+    {
+        "entity": "Peterborough",
+        "class": "城市"
+    },
+    {
+        "entity": "Farnborough F.C.",
+        "class": "足球俱乐部"
+    },
+
+
+
+{
+    "entity": "Crown of Aragon",
+    "class": "crown"
+},
+{
+    "entity": "Jerusalem", 
+    "class": "city"
+},
+{
+    "entity": "Northampton",
+    "class": "town"
+},
+{
+    "entity": "Rockingham County",
+    "class": "county"
+},
+{
+    "entity": "TNT",
+    "class": "logistics company"
+},
+{
+    "entity": "WCW Monday Nitro",
+    "class": "professional wrestling promotion"
+},
+{
+    "entity": "Kingdom of Romania",
+    "class": "kingdom"
+},
+{
+    "entity": "Star Trek: Deep Space Nine",
+    "class": "TV series"
+},
+{
+    "entity": "Peterborough",
+    "class": "city"
+},
+{
+    "entity": "Farnborough F.C.",
+    "class": "football club"
+},
+
+
+
+
+    {
+        "entity": "GNK Dinamo Zagreb",
+        "class": "足球俱乐部"
+    },
+    {
+        "entity": "Ki Sung-yueng",
+        "class": "足球运动员"
+    },
+    {
+        "entity": "British Academy Television Award for Best Actress",
+        "class": "奖项"
+    },
+    {
+        "entity": "Mitch Pileggi",
+        "class": "演员"
+    },
+    {
+        "entity": "St. Catharines",
+        "class": "城市"
+    },
+    {
+        "entity": "Colchester United F.C.",
+        "class": "足球俱乐部"
+    },
+    {
+        "entity": "Charlie Adler",
+        "class": "配音演员"
+    },
+    {
+        "entity": "Wagga Wagga",
+        "class": "城市"
+    },
+    {
+        "entity": "Sierra Entertainment",
+        "class": "软件公司"
+    },
+    {
+        "entity": "American Academy of Arts and Letters",
+        "class": "学术机构"
+    },
+
+{
+    "entity": "GNK Dinamo Zagreb",
+    "class": "football club"
+},
+{
+    "entity": "Ki Sung-yueng", 
+    "class": "football player"
+},
+{
+    "entity": "British Academy Television Award for Best Actress",
+    "class": "award"
+},
+{
+    "entity": "Mitch Pileggi",
+    "class": "actor"
+},
+{
+    "entity": "St. Catharines",
+    "class": "city"
+},
+{
+    "entity": "Colchester United F.C.",
+    "class": "football club"
+},
+{
+    "entity": "Charlie Adler",
+    "class": "voice actor"
+},
+{
+    "entity": "Wagga Wagga",
+    "class": "city"
+},
+{
+    "entity": "Sierra Entertainment",
+    "class": "software company"
+},
+{
+    "entity": "American Academy of Arts and Letters",
+    "class": "academic institution"
+}
+
+    {
+        "freebase_id": "/m/09cmq",
+        "value": 14510,
+        "label": "museum",
+        "classname": "museum",
+        "classid": 1266
+    },
+    {
+        "freebase_id": "/m/0dng4",
+        "value": 14511,
+        "label": "Daffy Duck",
+        "classname": "animated character",
+        "classid": 864
+    },
+    {
+        "freebase_id": "/m/05qc_",
+        "value": 14512,
+        "label": "planet",
+        "classname": "astronomical object type",
+        "classid": 943
+    },
+    {
+        "freebase_id": "/m/08hbxv",
+        "value": 14513,
+        "label": "Kosi Zone",
+        "classname": "zone of Nepal",
+        "classid": 1098
+    },
+    {
+        "freebase_id": "/m/05hyf",
+        "value": 14514,
+        "label": "nazism",
+        "classname": "political ideology",
+        "classid": 952
+    },
+    {
+        "freebase_id": "/m/0qb7t",
+        "value": 14515,
+        "label": "organization",
+        "classname": "",
+        "classid": 1267
+    },
+    {
+        "freebase_id": "/m/027752",
+        "value": 14516,
+        "label": "United National Party",
+        "classname": "political party",
+        "classid": 240
+    },
+    {
+        "freebase_id": "/m/03f_jk",
+        "value": 14517,
+        "label": "Lasker-DeBakey Clinical Medical Research Award",
+        "classname": "science award",
+        "classid": 780
+    },
+    {
+        "freebase_id": "/m/027qb1",
+        "value": 14518,
+        "label": "commissioner",
+        "classname": "title",
+        "classid": 938
+    },
+    {
+        "freebase_id": "/m/01x8f6",
+        "value": 14519,
+        "label": "Ontario New Democratic Party",
+        "classname": "political party",
+        "classid": 240
+    },
+    {
+        "freebase_id": "/m/025x7g_",
+        "value": 14520,
+        "label": "geometry",
+        "classname": "area of mathematics",
+        "classid": 1099
+    },
+    {
+        "freebase_id": "/m/080v2",
+        "value": 14521,
+        "label": "Vice President of the United States",
+        "classname": "vice president",
+        "classid": 1100
+    },
+    {
+        "freebase_id": "/m/037vqt",
+        "value": 14522,
+        "label": "James E. Sullivan Award",
+        "classname": "sports award",
+        "classid": 1101
+    },
+    {
+        "freebase_id": "/m/026y05",
+        "value": 14523,
+        "label": "productivity",
+        "classname": "metric",
+        "classid": 1102
+    },
+    {
+        "freebase_id": "/m/05k8m5",
+        "value": 14524,
+        "label": "Spinefarm Records",
+        "classname": "imprint",
+        "classid": 942
+    },
+    {
+        "freebase_id": "/m/0hsph",
+        "value": 14525,
+        "label": "Northern Dancer",
+        "classname": "horse",
+        "classid": 1103
+    },
+    {
+        "freebase_id": "/m/02rxd26",
+        "value": 14526,
+        "label": "2009 Tour de France",
+        "classname": "Tour de France",
+        "classid": 1104
+    },
+    {
+        "freebase_id": "/m/07hn5",
+        "value": 14527,
+        "label": "Tour de France",
+        "classname": "Grand Tour",
+        "classid": 1105
+    },
+    {
+        "freebase_id": "/m/03tp4",
+        "value": 14528,
+        "label": "infectious disease",
+        "classname": "class of disease",
+        "classid": 65
+    },
+    {
+        "freebase_id": "/m/04gbl3",
+        "value": 14529,
+        "label": "Ocean Software",
+        "classname": "video game developer",
+        "classid": 441
+    },
+    {
+        "freebase_id": "/m/01664_",
+        "value": 14530,
+        "label": "natural history",
+        "classname": "academic discipline",
+        "classid": 117
+    },
+    {
+        "freebase_id": "/m/0171c7",
+        "value": 14531,
+        "label": "Australian Greens",
+        "classname": "green party",
+        "classid": 1106
+    },
+    {
+        "freebase_id": "/m/0zq7r",
+        "value": 14532,
+        "label": "Vertigo",
+        "classname": "book publisher",
+        "classid": 454
+    },
+    {
+        "freebase_id": "/m/047vnfs",
+        "value": 14533,
+        "label": "association football manager",
+        "classname": "profession",
+        "classid": 20
+    },
+    {
+        "freebase_id": "/m/022qqh",
+        "value": 14534,
+        "label": "curator",
+        "classname": "profession",
+        "classid": 20
+    },
+    {
+        "freebase_id": "/m/0jvq",
+        "value": 14535,
+        "label": "asteroid",
+        "classname": "astronomical object type",
+        "classid": 943
+    },
+    {
+        "freebase_id": "/m/0lyb_",
+        "value": 14536,
+        "label": "Pulitzer Prize for Music",
+        "classname": "music award",
+        "classid": 315
+    },
+    {
+        "freebase_id": "/m/027yjnv",
+        "value": 14537,
+        "label": "2008 Tour de France",
+        "classname": "Tour de France",
+        "classid": 1104
+    },
+    {
+        "freebase_id": "/m/024030",
+        "value": 14538,
+        "label": "Padma Vibhushan",
+        "classname": "award",
+        "classid": 189
+    },
+    {
+        "freebase_id": "/m/024tv_",
+        "value": 14539,
+        "label": "Pakistan Peoples Party",
+        "classname": "political party",
+        "classid": 240
+    },
+
+
+
+
+
+
+
+我每次会按照[{\"entity\":\"entity name1\"},{\"entity\":\"entity name1\"}]的格式输入十个实体名称，你能帮我生成他们对应的实体类型也就是class吗，请按照格式[{"entity":"entity name1", "class":"class name"},{"entity":"entity name1", "class":"class name"}]的格式进行输出，并且不要输出其他无关的内容。
+[{"entity": "Dominican Republic"}, {"entity": "republic"}, {"entity": "Mighty Morphin Power Rangers"}, {"entity": "Wendee Lee"}, {"entity": "drama film"}, {"entity": "American History X"}, {"entity": "Michelle Rodriguez"}, {"entity": "Naveen Andrews"}, {"entity": "Australia men's national soccer team"}, {"entity": "midfielder"}]
+
+[
+    {"entity":"museum", "class":"building"},
+    {"entity":"Daffy Duck", "class":"Cartoon Character"},
+    {"entity":"planet", "class":"astronomical object"},
+    {"entity":"Kosi Zone", "class":"region"},
+    {"entity":"nazism", "class":"ideology"},
+    {"entity":"organization", "class":"Organization"},
+    {"entity":"United National Party", "class":"Political party"},
+    {"entity":"musLasker-DeBakey Clinical Medical Research Awardeum", "class":"Medical Award"},
+    {"entity":"commissioner", "class":"Government Official"},
+    {"entity":"Ontario New Democratic Party", "class":"Political party"}
+]
+
+我每次会按照[{\"entity\":\"entity name1\"},{\"entity\":\"entity name1\"}]的格式输入十个实体名称，你能帮我生成他们对应的实体类型也就是class吗，请按照格式[{"entity":"entity name1", "class":"class name"},{"entity":"entity name1", "class":"class name"}]的格式进行输出，并且不要输出其他无关的内容。
+[{"entity": "museum"},{"entity": "Daffy Duck"},{"entity": "planet"},{"entity": "Kosi Zone"},{"entity": "nazism"},{"entity": "organization"},{"entity": "United National Party"},{"entity": "musLasker-DeBakey Clinical Medical Research Awardeum"},{"entity": "commissioner"},{"entity": "Ontario New Democratic Party"},]
+
+[
+    {"entity":"museum", "class":"building"},
+    {"entity":"Daffy Duck", "class":"Cartoon Character"},
+    {"entity":"planet", "class":"astronomical object"},
+    {"entity":"Kosi Zone", "class":"region"},
+    {"entity":"nazism", "class":"ideology"},
+    {"entity":"organization", "class":"Organization"},
+    {"entity":"United National Party", "class":"Political party"},
+    {"entity":"musLasker-DeBakey Clinical Medical Research Awardeum", "class":"Medical Award"},
+    {"entity":"commissioner", "class":"Government Official"},
+    {"entity":"Ontario New Democratic Party", "class":"Political party"}
+]
+
+我每次会按照[{\"entity\":\"entity name1\"},{\"entity\":\"entity name1\"}]的格式输入十个实体名称，你能帮我生成他们对应的实体类型也就是class吗，请按照格式[{"entity":"entity name1", "class":"class name"},{"entity":"entity name1", "class":"class name"}]的格式进行输出，并且不要输出其他无关的内容。
+[{"entity": "geometry"},{"entity": "Vice President of the United States"},{"entity": "James E. Sullivan Award"},{"entity": "productivity"},{"entity": "Spinefarm Records"},{"entity": "Northern Dancer"},{"entity": "2009 Tour de France"},{"entity": "Tour de France"},{"entity": "infectious disease"},{"entity": "Ocean Software"},]
+
+[
+    {"entity":"geometry", "class":"Field of Study"},
+    {"entity":"Vice President of the United States", "class":"Government Position"},
+    {"entity":"James E. Sullivan Award", "class":"Award"},
+    {"entity":"productivity", "class":"Economic Concept"},
+    {"entity":"Spinefarm Records", "class":"Record Label"},
+    {"entity":"Northern Dancer", "class":"Racehorse"},
+    {"entity":"2009 Tour de France", "class":"Cycling Race"},
+    {"entity":"Tour de France", "class":"Series of Cycling Races"},
+    {"entity":"infectious disease", "class":"Disease"},
+    {"entity":"Ocean Software", "class":"Software Company"}
+]
+
+
+我每次会按照[{\"entity\":\"entity name1\"},{\"entity\":\"entity name1\"}]的格式输入十个实体名称，你能帮我生成他们对应的实体类型也就是class吗，请按照格式[{"entity":"entity name1", "class":"class name"},{"entity":"entity name1", "class":"class name"}]的格式进行输出，并且不要输出其他无关的内容。
+[{"entity": "natural history"},{"entity": "Australian Greens"},{"entity": "Vertigo"},{"entity": "association football manager"},{"entity": "curator"},{"entity": "asteroid"},{"entity": "Pulitzer Prize for Music"},{"entity": "2008 Tour de France"},{"entity": "Padma Vibhushan"},{"entity": "Pakistan Peoples Party"}]
+
+[
+    {"entity":"natural history", "class":"Field of Study"},
+    {"entity":"Australian Greens", "class":"Political party"},
+    {"entity":"Vertigo", "class":"Medical Condition"},
+    {"entity":"association football manager", "class":"Occupation"},
+    {"entity":"curator", "class":"Museum Occupation"},
+    {"entity":"asteroid", "class":"Astronomical Object"},
+    {"entity":"Pulitzer Prize for Music", "class":"Music Award"},
+    {"entity":"2008 Tour de France", "class":"Cycling Race"},
+    {"entity":"Padma Vibhushan", "class":"Award"},
+    {"entity":"Pakistan Peoples Party", "class":"Political party"}
+]
