@@ -2,10 +2,12 @@ import os
 import json
 import torch
 import transformers
-from peft import PeftModel
 from sklearn.metrics import f1_score, accuracy_score, precision_score, recall_score
 from dataset import *
 from transformers import GenerationConfig, LlamaForCausalLM, LlamaTokenizer
+from peft import LoraConfig, TaskType, get_peft_model, PeftModel
+from modelscope import AutoModelForCausalLM, AutoTokenizer
+from transformers import TrainingArguments, Trainer
 
 base_path = 'Your LLM Path'
 
@@ -25,14 +27,13 @@ Given a triple and ontological knowledge from a knowledge graph. Each triple con
 
 if __name__ == "__main__":
     cuda = "cuda:0"
-    lora_weights = "figure"
-    test_data_path = "./lora-alpaca"
-    embedding_path = "{}/embeddings.pth".format(lora_weights)
-    embedding_path = "data/FB15K-237N-rotate.pth"
+    lora_weights = "./lora-alpaca"
+    test_data_path = ".data/FB15K237/FB15K237O.json"
+    embedding_path = "data/FB15K-237/FB15K237O.pth"
     test_dataset = load_dataset(test_data_path)
     kg_embeddings = torch.load(embedding_path).to(cuda)
-    tokenizer = LlamaTokenizer.from_pretrained(base_path)
-    model = LlamaForCausalLM.from_pretrained(
+    tokenizer = AutoTokenizer.from_pretrained(base_path)
+    model = AutoModelForCausalLM.from_pretrained(
         base_path,
         torch_dtype=torch.float16
     ).to(cuda)
@@ -48,13 +49,12 @@ if __name__ == "__main__":
     model = model.eval()
     result = []
     for data in test_dataset:
-        ent = data["input"]
-        ont = get_ont("FB15K-237N")
-        ans = data["output"]
+        ent = data["context"] + data_point["question"] + data_point["answers"]
+        ans = data["answers"]
         ids = data["embedding_ids"]
         ids = torch.LongTensor(ids).reshape(1, -1).to(cuda)
         prefix = kg_embeddings(ids)
-        prompt = prompt_template.format(ent + ont)
+        prompt = prompt_template.format(ent)
         inputs = tokenizer(prompt, return_tensors="pt")
         input_ids = inputs.input_ids.to(cuda)
         token_embeds = model.model.model.embed_tokens(input_ids)

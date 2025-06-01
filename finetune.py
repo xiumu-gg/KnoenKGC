@@ -2,11 +2,16 @@ import os
 import sys
 from typing import List
 
-import time
 import fire
 import torch
 import transformers
 from datasets import load_dataset
+from kopa import KoPA, KoPAWithAdapter
+
+
+from peft import LoraConfig, TaskType, get_peft_model, PeftModel
+from modelscope import AutoModelForCausalLM, AutoTokenizer
+from transformers import TrainingArguments, Trainer
 
 """
 Unused imports:
@@ -21,14 +26,13 @@ from peft import (
     prepare_model_for_int8_training,
     set_peft_model_state_dict,
 )
-from transformers import LlamaForCausalLM, LlamaTokenizer
 
 from utils.prompter import Prompter
 
 
 def train(
     # model/data params
-    base_model: str = "",  # the only required argument
+    base_model: str = ".data/FB15K237/FB15K237O.json",  # the only required argument
     data_path: str = "YOUR LLM PATH",
     output_dir: str = "./lora-alpaca",
     # training hyperparams
@@ -46,6 +50,7 @@ def train(
         "q_proj",
         "v_proj",
     ],
+    num_prefix: int = 1,
     # llm hyperparams
     train_on_inputs: bool = True,  # if False, masks out inputs in loss
     add_eos_token: bool = False,
@@ -57,6 +62,7 @@ def train(
     wandb_log_model: str = "",  # options: false | true
     resume_from_checkpoint: str = None,  # either training checkpoint or final adapter
     prompt_template_name: str = "alpaca",  # The prompt template to use, will default to alpaca.
+    kge_model: str = "data/FB15K237.pth"
 ):
     if int(os.environ.get("LOCAL_RANK", 0)) == 0:
         print(
@@ -71,6 +77,7 @@ def train(
             f"cutoff_len: {cutoff_len}\n"
             f"val_set_size: {val_set_size}\n"
             f"lora_r: {lora_r}\n"
+            f"num_prefix: {num_prefix}\n"
             f"lora_alpha: {lora_alpha}\n"
             f"lora_dropout: {lora_dropout}\n"
             f"lora_target_modules: {lora_target_modules}\n"
@@ -83,10 +90,11 @@ def train(
             f"wandb_log_model: {wandb_log_model}\n"
             f"resume_from_checkpoint: {resume_from_checkpoint or False}\n"
             f"prompt template: {prompt_template_name}\n"
+            f"kge model: {kge_model}\n"
         )
     assert (
         base_model
-    ), "Please specify a --base_model, e.g. --base_model='huggyllama/llama-7b'"
+    ), "Please specify a --base_model, e.g. --base_model='deepseek-R1:70b'"
     gradient_accumulation_steps = batch_size // micro_batch_size
 
     prompter = Prompter(prompt_template_name)
@@ -99,14 +107,14 @@ def train(
         gradient_accumulation_steps = gradient_accumulation_steps // world_size
 
 
-    model = LlamaForCausalLM.from_pretrained(
+    model = AutoModelForCausalLM.from_pretrained(
         base_model,
         # load_in_8bit=True,
         torch_dtype=torch.float16,
         device_map=device_map,
     )
 
-    tokenizer = LlamaTokenizer.from_pretrained(base_model)
+    tokenizer = AutoTokenizer.from_pretrained(base_model)
 
     tokenizer.pad_token_id = (
         0  # unk. we want this to be different from the eos token
@@ -137,9 +145,9 @@ def train(
 
     def generate_and_tokenize_prompt(data_point):
         full_prompt = prompter.generate_prompt(
-            data_point["instruction"],
-            data_point["input"],
-            data_point["output"],
+            data_point["context"],
+            data_point["question"],
+            data_point["answers"],
         )
         tokenized_full_prompt = tokenize(full_prompt)
         if not train_on_inputs:
@@ -161,7 +169,7 @@ def train(
             ]  # could be sped up, probably
         return tokenized_full_prompt
 
-    model = prepare_model_for_int8_training(model)
+    # model = prepare_model_for_int8_training(model)
 
     config = LoraConfig(
         r=lora_r,
@@ -172,6 +180,7 @@ def train(
         task_type="CAUSAL_LM",
     )
     model = get_peft_model(model, config)
+    slama_model = KoPAWithAdapter(model, num_prefix, kge_model=kge_model)
 
     if data_path.endswith(".json") or data_path.endswith(".jsonl"):
         data = load_dataset("json", data_files=data_path)
@@ -198,20 +207,20 @@ def train(
         else:
             print(f"Checkpoint {checkpoint_name} not found")
 
-    model.print_trainable_parameters()  # Be more transparent about the % of trainable params.
+    # model.print_trainable_parameters()  # Be more transparent about the % of trainable params.
 
     if val_set_size > 0:
-        train_val = data["train"].train_test_split(
+        train_val = data.train_test_split(
             test_size=val_set_size, shuffle=True, seed=42
         )
         train_data = (
-            train_val["train"].shuffle().map(generate_and_tokenize_prompt)
+            train_val.shuffle().map(generate_and_tokenize_prompt)
         )
         val_data = (
-            train_val["test"].shuffle().map(generate_and_tokenize_prompt)
+            train_val.shuffle().map(generate_and_tokenize_prompt)
         )
     else:
-        train_data = data["train"].shuffle().map(generate_and_tokenize_prompt)
+        train_data = data.shuffle().map(generate_and_tokenize_prompt)
         val_data = None
 
     if not ddp and torch.cuda.device_count() > 1:
@@ -220,7 +229,7 @@ def train(
         model.model_parallel = True
 
     trainer = transformers.Trainer(
-        model=model,
+        model=slama_model,
         train_dataset=train_data,
         eval_dataset=val_data,
         args=transformers.TrainingArguments(
@@ -231,11 +240,11 @@ def train(
             learning_rate=learning_rate,
             fp16=True,
             logging_steps=10,
-            optim="adamw_torch",
+            optim="adamw_hf",
             evaluation_strategy="steps" if val_set_size > 0 else "no",
             save_strategy="steps",
             eval_steps=None,
-            save_steps=8000,
+            save_steps=5000,
             output_dir=output_dir,
             save_total_limit=2,
             load_best_model_at_end=True if val_set_size > 0 else False,
@@ -263,6 +272,7 @@ def train(
     trainer.train(resume_from_checkpoint=resume_from_checkpoint)
 
     model.save_pretrained(output_dir)
+    torch.save(slama_model.embeddings, os.path.join(output_dir, "embeddings.pth"))
 
     print(
         "\n If there's a warning about missing keys above, please disregard :)"
