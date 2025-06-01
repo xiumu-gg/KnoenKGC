@@ -1,3 +1,4 @@
 *.pth filter=lfs diff=lfs merge=lfs -text
 *.json filter=lfs diff=lfs merge=lfs -text
 data/FB15K237/FB15K-237N-train.json filter=lfs diff=lfs merge=lfs -text
+FB15K237O.json filter=lfs diff=lfs merge=lfs -text
